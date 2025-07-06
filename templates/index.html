@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fraud Detection App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ Fraud Detection System</h1>
+        <form action="/predict" method="post">
+            <input type="text" name="cc_num" placeholder="Card Number" required><br>
+            <input type="text" name="merchant" placeholder="Merchant (e.g., fraud_Haley Group)" required><br>
+            <input type="text" name="category" placeholder="Category (e.g., misc_pos)" required><br>
+            <input type="number" name="amt" step="0.01" placeholder="Amount" required><br>
+            <input type="text" name="lat" placeholder="User Latitude" required><br>
+            <input type="text" name="long" placeholder="User Longitude" required><br>
+            <input type="text" name="merch_lat" placeholder="Merchant Latitude" required><br>
+            <input type="text" name="merch_long" placeholder="Merchant Longitude" required><br>
+            <button type="submit">Check for Fraud</button>
+        </form>
+
+        {% if result %}
+            <h2 class="result">{{ result }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
